@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
+
+:root {
+  --bg-clr-1: #353333;
+  --bg-clr-2: #35363a;
+  --bg-clr-3: #f1f5f8;
+  --bg-clr-4: #1a1a1d;
+  --bg-clr-5: #fccc47;
+  --bg-clr-6: #ee5743;
+  --bg-clr-7: hsl(210, 50%, 14%);
+  --bg-clr-8: #d2dbdc;
+  --german-red: #d60000;
+  --german-yellow: #f7c800;
+  --shadow-cyan-1: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px cyan;
+  --shadow-cyan-2: 0 0 5px #fff, 0 0 10px cyan, 0 0 20px cyan;
+  --shadow-cyan-3: 0 0 20px cyan, 0 0 30px cyan;
+  --shadow-red-1: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px red, 0 0 30px red;
+  --shadow-red-2: 0 0 20px red, 0 0 30px red;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: var(--bg-clr-3);
+}
+.landed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  background: black;
+  font-family: Bebas Neue;
+  font-weight: 400;
+  font-size: 4rem;
+}
+.nav-bar {
+  font-family: Montserrat;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: black;
+  position: fixed;
+  width: 100%;
+  padding: 0rem 10%;
+}
+.nav-bar li {
+  margin-right: 2rem;
+  float: left;
+  list-style-type: none;
+}
+.nav-items li {
+  font-size: 1.563rem;
+}
+.nav-toggle {
+  display: none;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: var(--german-red);
+  font-weight: 400;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.logo {
+  width: 18.75rem;
+}
+.hide {
+  width: 5.625rem;
+  /* visibility: hidden; */
+}
+.black {
+  color: black;
+}
+.red {
+  color: var(--german-red);
+}
+.yellow {
+  color: var(--german-yellow);
+}
+.college {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 100;
+}
+
+/****** THE CONTENT  ******/
+
+.the-content {
+  margin: 10.625rem 3.125rem;
+}
+.header {
+  color: black;
+  font-family: Bebas Neue, sans-serif;
+  font-size: 3.75rem;
+  letter-spacing: 1px;
+  line-height: 4.5rem;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  width: 100%;
+}
+.text {
+  margin: 0 auto;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 1.688rem;
+  font-weight: 400;
+  max-width: 900px;
+}
+
+.slideshow {
+  max-width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+  transition: background-image 4s;
+  background-image: url(https://www.abc.net.au/news/image/5595494-3x2-940x627.jpg);
+  background-size: cover;
+  box-shadow: 0 0 10px #000;
+}
+.events {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 90vw;
+  text-align: center;
+  margin: 0 auto;
+}
+.card {
+  width: 500px;
+  text-align: left;
+  padding: 1.875rem 1.563rem 1.875rem 1.875rem;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+.title {
+  font-family: Bebas Neue, sans-serif;
+  font-size: 2.063rem;
+  margin: 8px 0;
+}
+.event-text {
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+.social-media {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+  list-style-type: none;
+  font-size: 3.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.social-media a {
+  color: black;
+  margin: 0.5rem 1.875rem;
+}
+.fb:hover {
+  color: #3b5998;
+}
+.twitter:hover {
+  color: #00acee;
+}
+.insta:hover {
+  color: red;
+}
+.linkedin:hover {
+  color: #0077b5;
+}
+.github:hover {
+  color: white;
+  background: black;
+}
+.medium:hover {
+  color: white;
+  background: black;
+}
+@media screen and (max-width: 650px) {
+  html {
+    font-size: 12px;
+  }
+  .nav-bar {
+    /* padding: 0; */
+    /* background: lightblue; */
+    margin: 0;
+  }
+  .hide {
+    visibility: hidden;
+  }
+  .nav-header {
+    /* background: pink; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-toggle {
+    display: block;
+    font-size: 1.5rem;
+    color: white;
+    background: transparent;
+    border-color: transparent;
+    cursor: pointer;
+  }
+  .nav-items {
+    display: none;
+    height: 0;
+  }
+  .events {
+    width: 100%;
+    display: block;
+  }
+  .card {
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
