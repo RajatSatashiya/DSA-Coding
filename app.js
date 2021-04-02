@@ -30,32 +30,8 @@ const images = (arr) => {
   }, 5000);
 };
 
-if (screen.width < 600) {
+if (screen.width > 600) {
   images(screenImages);
 } else {
   images(imgArray);
 }
-// if (screen.width < 600) {
-//   var images = () => {
-//     i++;
-//     if (i == screenImages.length) {
-//       i = 0;
-//     }
-//     culturePic.style.backgroundImage = `url("${screenImages[i]}")`;
-//     setTimeout(() => {
-//       images();
-//     }, 5000);
-//   };
-// } else {
-//   var images = () => {
-//     i++;
-//     if (i == imgArray.length) {
-//       i = 0;
-//     }
-//     culturePic.style.backgroundImage = `url("${imgArray[i]}")`;
-//     setTimeout(() => {
-//       images();
-//     }, 5000);
-//   };
-// }
-// images();
