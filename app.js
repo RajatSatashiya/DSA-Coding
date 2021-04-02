@@ -10,14 +10,52 @@ const imgArray = [
   "https://s3.amazonaws.com/the-drive-staging/message-editor%2F1520362523292-beauty9.jpg",
 ];
 
-const images = () => {
+const screenImages = [
+  "./mobile-images/football.jpg",
+  "./mobile-images/celebration.jpg",
+  "./mobile-images/oktober.jpg",
+  "./mobile-images/houses.jpg",
+  "./mobile-images/rally.jpg",
+  "./mobile-images/porsche.jpg",
+];
+
+const images = (arr) => {
   i++;
-  if (i == imgArray.length) {
+  if (i == arr.length) {
     i = 0;
   }
-  culturePic.style.backgroundImage = `url("${imgArray[i]}")`;
+  culturePic.style.backgroundImage = `url("${arr[i]}")`;
   setTimeout(() => {
-    images();
+    images(arr);
   }, 5000);
 };
-images();
+
+if (screen.width < 600) {
+  images(screenImages);
+} else {
+  images(imgArray);
+}
+// if (screen.width < 600) {
+//   var images = () => {
+//     i++;
+//     if (i == screenImages.length) {
+//       i = 0;
+//     }
+//     culturePic.style.backgroundImage = `url("${screenImages[i]}")`;
+//     setTimeout(() => {
+//       images();
+//     }, 5000);
+//   };
+// } else {
+//   var images = () => {
+//     i++;
+//     if (i == imgArray.length) {
+//       i = 0;
+//     }
+//     culturePic.style.backgroundImage = `url("${imgArray[i]}")`;
+//     setTimeout(() => {
+//       images();
+//     }, 5000);
+//   };
+// }
+// images();
