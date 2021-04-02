@@ -12,7 +12,7 @@ const imgArray = [
 
 const screenImages = [
   "./mobile-images/football.jpg",
-  // "./mobile-images/celebration.jpg",
+  "./mobile-images/celebration.jpg",
   // "./mobile-images/oktober.jpg",
   // "./mobile-images/houses.jpg",
   // "./mobile-images/rally.jpg",
