@@ -132,7 +132,7 @@ img {
   height: 500px;
   margin: 0 auto;
   transition: background-image 4s;
-  background-image: url(https://www.abc.net.au/news/image/5595494-3x2-940x627.jpg);
+  background-image: url("https://www.abc.net.au/news/image/5595494-3x2-940x627.jpg");
   background-size: cover;
   box-shadow: 0 0 10px #000;
 }
@@ -204,15 +204,12 @@ img {
     font-size: 12px;
   }
   .nav-bar {
-    /* padding: 0; */
-    /* background: lightblue; */
     margin: 0;
   }
   .hide {
     visibility: hidden;
   }
   .nav-header {
-    /* background: pink; */
     width: 100%;
     display: flex;
     align-items: center;
@@ -240,6 +237,5 @@ img {
   }
   .slideshow {
     height: 300px;
-    /* background-image: url("./mobile-images/beaches.jpg"); */
   }
 }
