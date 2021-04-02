@@ -30,7 +30,7 @@ const images = (arr) => {
   }, 5000);
 };
 
-if (screen.width > 600) {
+if (screen.width < 600) {
   images(screenImages);
 } else {
   images(imgArray);
