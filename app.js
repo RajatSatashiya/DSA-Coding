@@ -13,7 +13,7 @@ const imgArray = [
 const screenImages = [
   "./mobile-images/football.jpg",
   "./mobile-images/celebration.jpg",
-  // "./mobile-images/oktober.jpg",
+  "./mobile-images/oktober.jpg",
   // "./mobile-images/houses.jpg",
   // "./mobile-images/rally.jpg",
   // "./mobile-images/porsche.jpg",
@@ -30,7 +30,7 @@ const images = (arr) => {
   }, 5000);
 };
 
-if (screen.width < 600) {
+if (screen.width > 600) {
   images(screenImages);
 } else {
   images(imgArray);
