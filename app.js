@@ -76,6 +76,6 @@ scrollLink.forEach(function (link) {
       top: position - navBar.getBoundingClientRect().height,
     });
 
-    items.style.height = 0;
+    // items.style.height = 0;
   });
 });
