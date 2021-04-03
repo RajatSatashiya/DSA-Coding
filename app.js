@@ -19,19 +19,19 @@ const screenImages = [
   // "./mobile-images/porsche.jpg",
 ];
 
-const images = (arr) => {
+const images = (arr, delay) => {
   i++;
   if (i == arr.length) {
     i = 0;
   }
   culturePic.style.backgroundImage = `url("${arr[i]}")`;
   setTimeout(() => {
-    images(arr);
-  }, 5000);
+    images(arr, delay);
+  }, delay);
 };
 
 if (screen.width < 600) {
-  images(screenImages);
+  images(screenImages, 7000);
 } else {
-  images(imgArray);
+  images(imgArray, 5000);
 }
