@@ -13,6 +13,9 @@ class Solution {
 		int index = 0;
 		boolean flag = true;
 		for(int i=0; i<s.length(); i++) {
+			if(str[index] == null) {
+				str[index] = "";
+			}
 			str[index] += s.charAt(i);
 			
 			int diff = numRows - index - 1;
@@ -30,7 +33,7 @@ class Solution {
 		}
 		
 		for(String i:str) {
-			ans += i.substring(4,i.length());
+			ans += i;
 		}
 		return ans;
 	}
