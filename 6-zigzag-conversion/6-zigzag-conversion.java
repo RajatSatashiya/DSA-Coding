@@ -6,32 +6,22 @@ class Solution {
         if(s.length() < numRows){
             return s;
         }
-        if(numRows == 1){
-            return s;
-        }
+        if(numRows == 1) return s;
 		
 		int index = 0;
 		boolean flag = true;
-		for(int i=0; i<s.length(); i++) {
+		
+		char[] strChar = s.toCharArray();
+		for(char ch:strChar) {
 			if(str[index] == null) {
 				str[index] = "";
 			}
-			str[index] += s.charAt(i);
-			
-			int diff = numRows - index - 1;
-			if(diff == numRows-1) {
-				flag = true;
-			}else if(diff == 0) {
-				flag = false;
-			}
-			
-			if(flag) {
-				index++;
-			}else {
-				index--;
+			str[index] += ch;
+			index += (flag ? 1:-1);
+			if(index == 0 || index == numRows-1) {
+				flag = !flag;
 			}
 		}
-		
 		for(String i:str) {
 			ans += i;
 		}
