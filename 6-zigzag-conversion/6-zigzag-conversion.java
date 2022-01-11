@@ -1,30 +1,23 @@
 class Solution {
     public String convert(String s, int numRows) {
-		String ans = "";
-		String[] str = new String[numRows];
-        
-        if(s.length() < numRows){
-            return s;
+
+        if (numRows == 1) return s;
+
+        List<StringBuilder> rows = new ArrayList<>();
+        for (int i = 0; i < Math.min(numRows, s.length()); i++)
+            rows.add(new StringBuilder());
+
+        int curRow = 0;
+        boolean goingDown = false;
+
+        for (char c : s.toCharArray()) {
+            rows.get(curRow).append(c);
+            if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;
+            curRow += goingDown ? 1 : -1;
         }
-        if(numRows == 1) return s;
-		
-		int index = 0;
-		boolean flag = true;
-		
-		char[] strChar = s.toCharArray();
-		for(char ch:strChar) {
-			if(str[index] == null) {
-				str[index] = "";
-			}
-			str[index] += ch;
-			index += (flag ? 1:-1);
-			if(index == 0 || index == numRows-1) {
-				flag = !flag;
-			}
-		}
-		for(String i:str) {
-			ans += i;
-		}
-		return ans;
-	}
+
+        StringBuilder ret = new StringBuilder();
+        for (StringBuilder row : rows) ret.append(row);
+        return ret.toString();
+    }
 }
