@@ -5,19 +5,18 @@ class Solution {
         if(s.length() == 0) return 0;
         
         for(int i=0; i<s.length(); i++){
-            String str = "";
-            str += s.charAt(i);
+            ArrayList<Character> arr = new ArrayList<Character>();
+            arr.add(s.charAt(i));
             
             for(int j=i+1; j<s.length(); j++){
-            	String ch = Character.toString(s.charAt(j));
-                if(str.contains(ch)){
+                if(arr.contains(s.charAt(j))){
                     break;
                 }else{
-                    str += ch;
+                    arr.add(s.charAt(j));
                 }
             }
-            if(str.length() > max){
-                max = str.length();
+            if(arr.size() > max){
+                max = arr.size();
             }
         }
         
