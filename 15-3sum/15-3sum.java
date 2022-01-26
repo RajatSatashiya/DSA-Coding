@@ -4,6 +4,7 @@ class Solution {
         Arrays.sort(nums);
 
         for (int i=0; i < nums.length-2; i++) {
+            if(nums[i] > 0) break;
             if (i==0 ||  (i > 0 && nums[i] != nums[i-1])) { 
                 int first = -nums[i], lo = i+1, hi = nums.length - 1;
                 while(lo < hi) {
