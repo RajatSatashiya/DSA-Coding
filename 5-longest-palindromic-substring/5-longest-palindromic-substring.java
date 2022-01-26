@@ -1,37 +1,34 @@
 class Solution {
-    public boolean checkPalin(String s){
-        int i=0, j=s.length()-1;
-        
-        boolean flag = true;
-        while(i < j){
-            char left = s.charAt(i);
-            char right = s.charAt(j);
-            if(left != right){
-                flag = false;
-                break;
-            }
-            i++;
-            j--;
-        }
-        return flag;
-    }
     public String longestPalindrome(String s) {
-        int max = Integer.MIN_VALUE;
-        String ans = Character.toString(s.charAt(0));
+        if(s.length() == 1){
+           return s;
+        }
         
-        int count = s.length();
-        //babadcs, 7->1, 6->2, 5->3, 4->4
-        while(count >= 2){
-            for(int i=0; i<s.length()+1-count; i++){
-                if(count == 3){
-                    System.out.println(s.substring(i,i+count));
-                }
-                if(checkPalin(s.substring(i,i+count))){
-                    return s.substring(i,i+count);
+        //babad
+        int len = s.length();
+        boolean[][] status = new boolean[len][len];
+        
+        for(int i=0; i<len; i++){
+            status[i][i] = true;
+        }
+        //babad
+        int max = 1;
+        int numStart = 0;
+        for(int end = 1; end < len; end++){
+            for(int start = end-1; start > -1; start--){
+                if(s.charAt(start) == s.charAt(end)){                   
+                    if(status[start+1][end-1] || end == start+1){
+                        // System.out.println(s.substring(start,end+1));
+                        int cur = end-start+1;
+                        status[start][end] = true;
+                        if(end - start + 1 > max){
+                            max = end-start+1;
+                            numStart = start;
+                        }
+                    }
                 }
             }
-                count--;
         }
-        return ans;
+        return s.substring(numStart , numStart + max);
     }
 }
