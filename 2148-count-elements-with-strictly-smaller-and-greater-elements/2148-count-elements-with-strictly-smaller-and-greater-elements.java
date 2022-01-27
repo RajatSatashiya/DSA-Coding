@@ -1,14 +1,14 @@
 class Solution {
     public int countElements(int[] nums) {
-        Arrays.sort(nums);
-        
-        //-3,3,3,90
-        
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; ++i) {
+            min = Math.min(min, nums[i]);
+            max = Math.max(max, nums[i]);
+        }
         int count = 0;
-        int smallest = nums[0];
-        int largest = nums[nums.length-1];
-        for(int i=1; i<nums.length-1; i++){
-            if(smallest < nums[i] && nums[i] < largest){
+        for (int i = 0; i < nums.length; ++i) {
+            if (nums[i] > min && nums[i] < max) {
                 count++;
             }
         }
