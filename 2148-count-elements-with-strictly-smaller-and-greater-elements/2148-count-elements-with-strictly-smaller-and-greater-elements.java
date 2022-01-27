@@ -6,8 +6,7 @@ class Solution {
         
         int count = 0;
         for(int i=1; i<nums.length-1; i++){
-            int cur = nums[i];
-            if(nums[0] < cur && cur < nums[nums.length-1]){
+            if(nums[0] < nums[i] && nums[i] < nums[nums.length-1]){
                 count++;
             }
         }
