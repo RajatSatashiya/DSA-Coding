@@ -3,20 +3,18 @@ class Solution {
         Set<Integer> hset = new HashSet<Integer>();
         int sum = 0;
        
-        while(sum != 1){
-            char[] ch = Integer.toString(n).toCharArray();
+        //234
+        while(n != 1){
             sum = 0;
-            for(char temp:ch){
-                int val = (temp - '0');
-                sum += (val * val);
+            while(n != 0){
+                int temp = n % 10;
+                sum += temp * temp;
+                n = n / 10;
             }
             n = sum;
-            System.out.println(n);
             if(!hset.add(n)){
                 return false;
             }
-            System.out.println(hset);
-            
         }
         
         return true;
