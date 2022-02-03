@@ -1,24 +1,21 @@
 class Solution {
-    public boolean isHappy(int n) {
-        Set<Integer> hset = new HashSet<Integer>();
-        int sum = 0;
-       
-        while(sum != 1){
-            char[] ch = Integer.toString(n).toCharArray();
-            sum = 0;
-            for(char temp:ch){
-                int val = (temp - '0');
-                sum += (val * val);
-            }
-            n = sum;
-            System.out.println(n);
-            if(!hset.add(n)){
-                return false;
-            }
-            System.out.println(hset);
-            
+
+    private int getNext(int n) {
+        int totalSum = 0;
+        while (n > 0) {
+            int d = n % 10;
+            n = n / 10;
+            totalSum += d * d;
         }
-        
-        return true;
+        return totalSum;
+    }
+
+    public boolean isHappy(int n) {
+        Set<Integer> seen = new HashSet<>();
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            n = getNext(n);
+        }
+        return n == 1;
     }
 }
