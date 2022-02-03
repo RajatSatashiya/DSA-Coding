@@ -1,16 +1,11 @@
 class Solution {
     public boolean isUgly(int n) {
         if(n == 0) return false;
-        int[] fac = new int[]{2,3,5};
-        int pos = 0;
+        if(n == 1) return true;
         
-        while(n != 1 && pos < 3){
-            if(n % fac[pos] == 0){
-                n = n / fac[pos];
-            } else {
-                pos++;
-            }
-        }
+        while(n % 2 == 0) n /= 2;
+        while(n % 3 == 0) n /= 3;
+        while(n % 5 == 0) n /= 5;
         
         return n == 1;
     }
