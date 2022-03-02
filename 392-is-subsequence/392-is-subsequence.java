@@ -8,10 +8,8 @@ class Solution {
         while(j < t.length() && i < s.length()) {
             if(s.charAt(i) == t.charAt(j)) {
                 i++;
-                j++;
-            } else {
-                j++;
             }
+            j++;
         }
         
         return i == s.length();
