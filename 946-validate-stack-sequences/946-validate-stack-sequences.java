@@ -13,9 +13,7 @@ class Solution {
             } else {
                 st.pop();
                 j++;
-                // st.push(pushed[i++]);
             }
-            System.out.println(st);
         }
         while(!st.isEmpty() && st.pop() == popped[j]) j++;
         return st.isEmpty();
