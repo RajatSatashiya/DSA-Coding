@@ -12,18 +12,26 @@ class Solution {
         int min1 = h1*60 + m1; //150
         int min2 = h2*60 + m2; //275
         int diff = min2 - min1; //125
+        int rem = 0;
         
         while(diff != 0){
             if(diff >= 60) {
-                diff -= 60;
+                rem = diff % 60;
+                ans += diff / 60;
+                diff = rem;
             } else if(diff >= 15) {
-                diff -= 15;            
+                rem = diff % 15;                
+                ans += diff / 15;
+                diff = rem;          
             } else if(diff >= 5) {
-                diff -= 5;
+                System.out.println(ans);
+                rem = diff % 5;
+                ans += diff / 5;
+                diff = rem;
             } else {
-                diff -= 1;
+                ans += 1;
+                diff--;
             }
-            ans++;
         }
         
         return ans;
