@@ -7,11 +7,9 @@ class Solution {
         }
         Queue<Integer> heap = new PriorityQueue<>((a,b) -> map.get(a) - map.get(b));
         
-        System.out.println("map: " + map);
         for(int i:map.keySet()){
             heap.add(i);
             if(heap.size() > k) heap.poll();
-        System.out.println(heap);
         }
         
         int[] ans = new int[k];
