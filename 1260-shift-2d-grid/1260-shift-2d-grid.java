@@ -1,15 +1,18 @@
 class Solution {
     public List<List<Integer>> shiftGrid(int[][] grid, int k) {
-        int m = grid.length, n = grid[0].length; 
-        int start = m * n - k % (m * n);
-        LinkedList<List<Integer>> ans = new LinkedList<>();
-        for (int i = start; i < m * n + start; ++i) {
-            int j = i % (m * n), r = j / n, c = j % n;
-            System.out.println(j + " r: " + r + " c: " + c);
-            if ((i - start) % n == 0)
-                ans.add(new ArrayList<>());
-            ans.peekLast().add(grid[r][c]);
+        int row = grid.length, col = grid[0].length;
+        int start = row * col - k % (row * col);
+        LinkedList<List<Integer>> arr = new LinkedList<>();
+        
+        for(int i = start; i < row * col + start; i++){
+            int j = i % (row * col),
+            r = j / col, c = j % col;
+            
+            if((i-start) % col == 0){
+                arr.add(new ArrayList<>());
+            }
+            arr.peekLast().add(grid[r][c]);
         }
-        return ans;
+        return arr;        
     }
 }
