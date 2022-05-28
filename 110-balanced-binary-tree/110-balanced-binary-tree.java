@@ -4,7 +4,6 @@ class Solution {
         int one = depth(root.left);
         int two = depth(root.right);
         
-        System.out.println("one: " + one + " two : " + two + " " + root.val);
         if(Math.abs(one - two) <= 1 && isBalanced(root.left) && isBalanced(root.right)) {
             return true;
         } else {
