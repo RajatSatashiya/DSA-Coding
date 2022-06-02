@@ -1,12 +1,19 @@
 class Solution {
+    TreeNode prev = null;
     public boolean isValidBST(TreeNode root) {
-        return recursion(root, null, null);
-    }
-    
-    public boolean recursion(TreeNode root, Integer min, Integer max) {
         if(root == null) return true;
-        if((min != null && root.val <= min) || (max != null && root.val >= max)) return false;
         
-        return recursion(root.left, min, root.val) && recursion(root.right, root.val, max);
+        //inorder traversal
+        //left
+        if(isValidBST(root.left) == false) return false;
+        
+        //do something in center
+        if(prev != null && root.val <= prev.val) return false;
+        prev = root;
+        
+        //right;
+        if(isValidBST(root.right) == false) return false;
+        
+        return true;
     }
 }
