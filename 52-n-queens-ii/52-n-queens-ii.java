@@ -1,16 +1,16 @@
 class Solution {
+    public int ans = 0;
     public int totalNQueens(int n) {
         int[][] mat = new int[n][n];
         
-        List<List<String>> res = new ArrayList<>();
         for(int i=0; i<n; i++) {
-            backtrack(mat, n, res, 0, i);
+            backtrack(mat, n, 0, i);
         }
-        return res.size();
+        return ans;
     }
     
     
-    private boolean backtrack(int[][] mat, int n, List<List<String>> res, int row, int col) {
+    private boolean backtrack(int[][] mat, int n, int row, int col) {
         if(row == n) {
             return true;
         }
@@ -36,8 +36,8 @@ class Solution {
         mat[row][col] = 1;
         //explore
         for(int column = 0; column < n; column++){
-            if(backtrack(mat, n, res, row + 1, column)) {
-                res.add(construct(mat));
+            if(backtrack(mat, n, row + 1, column)) {
+                ans++;
                 break;
             }
         }
@@ -47,16 +47,16 @@ class Solution {
         return false;
     }
     
-    private List<String> construct(int[][] board) {
-        List<String> res2 = new LinkedList<String>();
-        for(int[] i:board){
-            String str = "";
-            for(int j:i){
-                if(j==0) str += ".";
-                else str += "Q";
-            }
-            res2.add(str);
-        }
-        return res2;
-    }
+    // private List<String> construct(int[][] board) {
+    //     List<String> res2 = new LinkedList<String>();
+    //     for(int[] i:board){
+    //         String str = "";
+    //         for(int j:i){
+    //             if(j==0) str += ".";
+    //             else str += "Q";
+    //         }
+    //         res2.add(str);
+    //     }
+    //     return res2;
+    // }
 }
