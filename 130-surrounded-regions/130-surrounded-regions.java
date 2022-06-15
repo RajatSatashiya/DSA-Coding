@@ -6,22 +6,28 @@ class Solution {
             if(board[0][i] == 'O') {
                 change(board, 0, i);
             }
-        }
-        for(int i = 0; i < board[0].length; i++) {
             if(board[board.length - 1][i] == 'O') {
                 change(board, board.length - 1, i);
             }
         }
+        // for(int i = 0; i < board[0].length; i++) {
+        //     if(board[board.length - 1][i] == 'O') {
+        //         change(board, board.length - 1, i);
+        //     }
+        // }
         for(int i = 0; i < board.length; i++) {
             if(board[i][0] == 'O') {
                 change(board, i, 0);
             }
-        }
-        for(int i = 0; i < board.length; i++) {
             if(board[i][board[0].length - 1] == 'O') {
                 change(board, i, board[0].length - 1);
             }
         }
+        // for(int i = 0; i < board.length; i++) {
+        //     if(board[i][board[0].length - 1] == 'O') {
+        //         change(board, i, board[0].length - 1);
+        //     }
+        // }
         
         
         for(int i = 0; i < board.length; i++) {
