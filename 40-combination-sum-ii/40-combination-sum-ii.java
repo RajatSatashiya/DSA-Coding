@@ -1,6 +1,6 @@
 class Solution {
     List<List<Integer>> li = new ArrayList<>();
-    HashSet<List<Integer>> set = new HashSet<>();
+    // HashSet<List<Integer>> set = new HashSet<>();
     
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         Arrays.sort(candidates);
@@ -8,13 +8,13 @@ class Solution {
         
         backtracking(candidates, arr, target, -1, 0);
 
-        li.addAll(set);
+        // li.addAll(set);
         return li;
     }
     
     public void backtracking(int[] candidates, ArrayList<Integer> arr, int target, int index, int sum){
         if(sum == target) {
-            set.add(new ArrayList<>(arr));
+            li.add(new ArrayList<>(arr));
         }
         if(sum > target) {
             return;
