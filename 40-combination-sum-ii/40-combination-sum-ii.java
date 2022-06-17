@@ -13,9 +13,7 @@ class Solution {
         if(sum == target) {
             li.add(new ArrayList<>(arr));
         }
-        if(sum > target) {
-            return;
-        }
+
         
         for(int i = index + 1; i < candidates.length && (sum + candidates[i] <= target); i++) {
             if(i > index + 1 && candidates[i] == candidates[i-1]) continue;
