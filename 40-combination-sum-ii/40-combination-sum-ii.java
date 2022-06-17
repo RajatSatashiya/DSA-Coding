@@ -1,14 +1,11 @@
 class Solution {
     List<List<Integer>> li = new ArrayList<>();
-    // HashSet<List<Integer>> set = new HashSet<>();
     
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         Arrays.sort(candidates);
         ArrayList<Integer> arr = new ArrayList<>();
         
         backtracking(candidates, arr, target, -1, 0);
-
-        // li.addAll(set);
         return li;
     }
     
@@ -20,8 +17,7 @@ class Solution {
             return;
         }
         
-        for(int i = index + 1; i < candidates.length; i++) {
-            // System.out.println(arr);
+        for(int i = index + 1; i < candidates.length && (sum + candidates[i] <= target); i++) {
             if(i > index + 1 && candidates[i] == candidates[i-1]) continue;
             arr.add(candidates[i]);
             backtracking(candidates, arr, target, i, sum + candidates[i]);
