@@ -2,19 +2,21 @@ class WordFilter {
     HashMap<String, Integer> map = new HashMap<>();
 
     public WordFilter(String[] words) {
-         for(int w = 0; w < words.length; w++){
-            for(int i = 0; i <= words[w].length(); i++){
-                for(int j = 0; j <= words[w].length(); j++){
-                    String str = words[w].substring(0, i) + "#" + words[w].substring(words[w].length()-j);
+        for(int i = 0; i < words.length; i++) {
+            // apple pple ple le e
+            //a apple pple ple le e
+            //ap apple pple ple le e
+            for(int j = 0; j <= words[i].length(); j++) {
+                for(int k = 0; k <= words[i].length(); k++) { //k = 0 k = 1
+                    String str = words[i].substring(0,j) + "#" + words[i].substring(k, words[i].length());
                     // System.out.println(str);
-                    map.put(str, w);
+                    map.put(str, i);
                 }
             }
         }
     }
     
     public int f(String prefix, String suffix) {
-        // System.out.println(map);
-        return (map.containsKey(prefix + "#" + suffix))? map.get(prefix + "#" + suffix) : -1;
+        return (map.containsKey(prefix + "#" + suffix)) ? map.get(prefix + "#" + suffix): -1;
     }
 }
