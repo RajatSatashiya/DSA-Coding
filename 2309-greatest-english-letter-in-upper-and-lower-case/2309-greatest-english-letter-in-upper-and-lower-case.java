@@ -10,21 +10,13 @@ class Solution {
             set.add(ascii);
         }
         
-        int ans = -1;
-        for(char ch:s.toCharArray()){
-            int ascii = ch;
-            if(ascii >= 97) {
-                if(set.contains(ascii - 32)) {
-                   ans = Math.max(ans, ascii - 32);
-                }
-            } else {
-                if(set.contains(ascii + 32)) {
-                   ans = Math.max(ans, ascii);
+        for(int i = 90; i >= 65; i--) {
+            if(set.contains(i)){
+                if(set.contains(i+32)){
+                    return Character.toString((char)i);
                 }
             }
         }
-        char temp = (char)ans;
-        return (ans == -1) ? "" : Character.toString(temp);
-        
+        return "";
     }
 }
