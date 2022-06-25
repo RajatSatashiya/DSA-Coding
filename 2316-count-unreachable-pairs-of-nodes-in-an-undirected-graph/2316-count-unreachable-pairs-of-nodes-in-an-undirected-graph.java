@@ -1,32 +1,37 @@
 class Solution {
-	public long countPairs(int n, int[][] edges) {
-		ArrayList<Integer>[] list = new ArrayList[n];
-		for (int i = 0; i < n; i++) {
-			list[i] = new ArrayList<>();
-		}
-		for (int[] edge : edges) {
-			list[edge[0]].add(edge[1]);
-			list[edge[1]].add(edge[0]);
-		}
-		boolean[] visited = new boolean[n];
-		long sum = 0;
-		for (int i = 0; i < n; i++) {
-			long count = countPairs(i, visited, list);
-			sum += count * (n - count);
-            // System.out.println(count + " " + sum);
-		}
-		return sum / 2;
-	}
-
-	private long countPairs(int i, boolean[] visited, ArrayList<Integer>[] list) {
-		if (visited[i]) {
-			return 0;
-		}
-		visited[i] = true;
-		int count = 1;
-		for (int j : list[i]) {
-			count += countPairs(j, visited, list);
-		}
-		return count;
-	}
+    public long countPairs(int n, int[][] edges) {
+        ArrayList<Integer>[] arr = new ArrayList[n];
+        
+        for(int i = 0; i < n; i++) {
+            arr[i] = new ArrayList<>();
+        }
+        
+        for(int[] i:edges) {
+            arr[i[0]].add(i[1]);
+            arr[i[1]].add(i[0]);
+        }
+        
+        long sum = 0;
+        boolean[] checked = new boolean[n];
+        
+        for(int i = 0; i < n; i++) {
+            long count = 0;
+            count += traverse(arr, checked, i);
+            sum += count * (n - count);
+        }
+        return sum / 2;
+    }
+    
+    public long traverse(ArrayList<Integer>[] arr, boolean[] checked, int val) {
+        if(checked[val]) {
+            return 0;
+        }
+        
+        checked[val] = true;
+        int count = 1;
+        for(int i:arr[val]) {
+            count += traverse(arr, checked, i);
+        }
+        return count;
+    }
 }
