@@ -3,8 +3,6 @@ class Solution {
     
     public int uniquePaths(int m, int n) {
         if(m == n && m == 1) return 1;
-        // int[][] grid = new int[m][n];
-        // grid[m - 1][n - 1] = 1;
 
         path = new int[m][n];
         travel(0, 0, m, n);
@@ -12,23 +10,13 @@ class Solution {
     }
     
     public int travel(int i, int j, int m, int n) {
-        if(i >= m || j >= n){
-            return 0;
-        }
+        if(i >= m || j >= n) return 0;
         
         if(path[i][j] != 0) {
             return path[i][j];
         }
         
-        if(i == m - 1 && j == n - 1) {
-            return 1;
-        }
-        
-        path[i][j] += travel(i, j + 1, m, n);
-        path[i][j] += travel(i + 1, j, m, n);
-        
-        // System.out.println("i: " + i + " j: " + j + " " + path[i][j]);
-        
-        return path[i][j];
+        if(i == m - 1 && j == n - 1) return 1;
+        return path[i][j] = travel(i, j + 1, m, n) + travel(i + 1, j, m, n);
     }
 }
