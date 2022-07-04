@@ -11,15 +11,10 @@ class Solution {
                 bulls++;
             } else {
                 sec[secret.charAt(i) - '0']++;
-            }
-        }
-        ans = bulls + ans;
-        
-        for(int i = 0; i < secret.length(); i++) {
-            if(secret.charAt(i) != guess.charAt(i)) {
                 guss[guess.charAt(i) - '0']++;
             }
         }
+        ans = bulls + ans;
         
         for(int i = 0; i < 10; i++) {
             if(guss[i] != 0 && sec[i] != 0) {
