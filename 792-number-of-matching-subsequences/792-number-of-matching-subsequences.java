@@ -18,7 +18,6 @@ class Solution {
             int cur = 0;
             for(int i = 0; i < str.length(); i++, cur++) {
                 char ch =  str.charAt(i);
-                System.out.println("char: " + ch + " " + cur);
                 cur = search(pos[ch - 'a'], cur);
                 if(cur == -1) break;
             }
