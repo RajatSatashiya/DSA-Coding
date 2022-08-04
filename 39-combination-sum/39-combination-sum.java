@@ -1,24 +1,28 @@
-public class Solution {
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
-    	Arrays.sort(candidates);
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        getResult(result, new ArrayList<Integer>(), candidates, target, 0);
+class Solution {
+    List<List<Integer>> li = new ArrayList<>();
+    public List<List<Integer>> combinationSum(int[] can, int target) {
+        Arrays.sort(can);
         
-        return result;
+        backtrack(can, target, new ArrayList<>(), 0, 0);
+        
+        return li;
     }
     
-    private void getResult(List<List<Integer>> result, List<Integer> cur, int candidates[], int target, int start){
-    	if(target > 0){
-            // System.out.println(target);
-    		for(int i = start; i < candidates.length && target >= candidates[i]; i++){
-    			cur.add(candidates[i]);
-    			getResult(result, cur, candidates, target - candidates[i], i);
-    			cur.remove(cur.size() - 1);
-    		}//for
-    	}//if
-    	else if(target == 0 ){
-    		result.add(new ArrayList<Integer>(cur));
-    	}//else if
-        System.out.println(cur);
+    public void backtrack(int[] can, int target, ArrayList<Integer> arr, int sum, int start) {
+        if(sum > target) {
+            return;
+        }
+        if(sum == target) {
+            li.add(new ArrayList<>(arr));
+            return;
+        } else {
+            for(int i = start; i < can.length && (can[i] <= target - sum); i++) {
+                arr.add(can[i]);
+                
+                backtrack(can, target, arr, sum + can[i], i);
+                
+                arr.remove(arr.size() - 1);
+            }
+        }
     }
 }
