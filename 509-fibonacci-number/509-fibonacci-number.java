@@ -14,7 +14,7 @@ class Solution {
             return dp[n];
         }
         
-        int ans = recursion(n - 1) + recursion(n - 2);
-        return ans;
+        dp[n] = recursion(n - 1) + recursion(n - 2);
+        return dp[n];
     }
 }
