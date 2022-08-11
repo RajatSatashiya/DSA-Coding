@@ -1,27 +1,22 @@
 class Solution {
     public int maxProduct(int[] nums) {
-        int max = nums[0];
-        int min = nums[0];
+        int[][] dp = new int[nums.length][2]; //0 -> min   1 -> max
+        
+        dp[0][0] = nums[0];
+        dp[0][1] = nums[0];
         int ans = nums[0];
         
-        for(int i=1; i<nums.length; i++) {
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] < 0) {
+                dp[i][1] = Math.max(Math.min(dp[i - 1][0] , dp[i - 1][1]) * nums[i] , nums[i]);
+                dp[i][0] = Math.min(Math.max(dp[i - 1][0] , dp[i - 1][1]) * nums[i] , nums[i]);
+            } else {
+                dp[i][1] = Math.max(Math.max(dp[i - 1][0] , dp[i - 1][1]) * nums[i] , nums[i]);
+                dp[i][0] = Math.min(Math.min(dp[i - 1][0] , dp[i - 1][1]) * nums[i] , nums[i]);
+            }
             
-            int a = max * nums[i];
-            int b = min * nums[i];
-            
-            max = max(a, b, nums[i]);
-            min = min(a, b, nums[i]);
-            
-            ans = Math.max(ans, max);
+            ans = Math.max(ans, Math.max(dp[i][0] , dp[i][1]));
         }
         return ans;
-    }
-    
-    public int max(int a, int b, int c) {
-        return Math.max(Math.max(a,b), c);
-    }
-    
-    public int min(int a, int b, int c) {
-        return Math.min(Math.min(a,b), c);
     }
 }
