@@ -1,19 +1,15 @@
 class Solution {
-    TreeNode prev = null;
     public boolean isValidBST(TreeNode root) {
+        return check(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+    
+    public boolean check(TreeNode root, long min, long max) {
         if(root == null) return true;
+        // System.out.println(root.val + " " + min + " " + max);
+        if(root.val <= min || root.val >= max) {
+            return false;
+        }
         
-        //inorder traversal
-        //left
-        if(isValidBST(root.left) == false) return false;
-        
-        //do something in center
-        if(prev != null && root.val <= prev.val) return false;
-        prev = root;
-        
-        //right;
-        if(isValidBST(root.right) == false) return false;
-        
-        return true;
+        return check(root.left, min, root.val) && check(root.right, root.val, max);
     }
 }
