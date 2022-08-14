@@ -1,26 +1,26 @@
 class Solution {
+    List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> data = new ArrayList<Integer>();
-        boolean[] arr = new boolean[nums.length];
-        perm(nums, ans, new ArrayList<>(), arr);
-        return ans;
+        boolean[] checked = new boolean[nums.length];
+        permutations(nums, new ArrayList<Integer>(), checked);
+        return res;
     }
     
-    private static void perm(int[] nums, List<List<Integer>> ans, List<Integer> data, boolean[] arr){
-        if(data.size() == nums.length){
-            ans.add(new ArrayList<>(data));
+    public void permutations(int[] nums, ArrayList<Integer> arr, boolean[] checked) {
+        if(arr.size() == nums.length) {
+            res.add(new ArrayList<>(arr));
             return;
         }
         
-        for(int i=0; i<nums.length; i++){
-            if(!arr[i]){
-                arr[i] = true;
-                data.add(nums[i]);
-                perm(nums, ans, data, arr);
-                arr[i] = false;
-                data.remove(data.size() - 1);
-            }
+        for(int i = 0; i < nums.length; i++) {
+            if(checked[i]) continue;
+            checked[i] = true;
+            arr.add(nums[i]);
+            
+            permutations(nums, arr, checked);
+            
+            checked[i] = false;
+            arr.remove(arr.size() - 1);
         }
     }
 }
