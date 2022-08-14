@@ -1,23 +1,14 @@
 class Solution {
     public int arithmeticTriplets(int[] nums, int diff) {
-        int ans = 0;
+        int count = 0;
+        HashSet<Integer> set = new HashSet<>();
         
-        for(int i = 0; i < nums.length - 2; i++) {
-            int lo = nums[i];
-            int count = 0;
-            for(int j = i + 1; j < nums.length; j++) {
-                if(nums[j] - lo > diff) break;
-                if(nums[j] - lo == diff) {
-                    count++;
-                    lo = nums[j];
-                }
-                if(count == 2) break;
+        for(int i = 0; i < nums.length; i++) {
+            if(set.contains(nums[i] - diff) && set.contains(nums[i] - diff * 2)) {
+                count++;
             }
-            if(count == 2) {
-                ans++;
-            }
+            set.add(nums[i]);
         }
-        
-        return ans;
+        return count;
     }
 }
