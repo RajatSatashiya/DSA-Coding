@@ -5,9 +5,7 @@ class Solution {
         
         for(int i = 0; i < nums.length; i++) {
             temp += nums[i];
-            if(temp > ans) {
-                ans = temp;
-            } 
+            ans = Math.max(ans, temp);
             if(temp < 0) {
                 temp = 0;
             }
