@@ -3,12 +3,6 @@ class Solution {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         Map<Integer, ArrayList<Integer>> map = new HashMap<>();
         
-        for(int i = 0; i < rooms.size(); i++) {
-            for(int j = 0; j < rooms.get(i).size(); j++) {
-                map.computeIfAbsent(i, index -> new ArrayList<>()).add(rooms.get(i).get(j));
-            }
-        }
-        
         return dfs(rooms, 0);
     }
     
