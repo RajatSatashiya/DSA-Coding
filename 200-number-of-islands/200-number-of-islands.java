@@ -1,29 +1,28 @@
 class Solution {
     public int numIslands(char[][] grid) {
-        int count = 0;
-        int row = grid.length;
-        int col = grid[0].length;
-        
-        for(int i=0; i<row; i++){
-            for(int j=0; j<col; j++){
+        int ans = 0;
+        for(int i = 0; i < grid.length; i++) {
+            for(int j = 0; j < grid[0].length; j++) {
                 if(grid[i][j] == '1') {
-                    change(grid, i, j);
-                    count++;
+                    recurse(grid, i, j);
+                    ans++;
                 }
             }
         }
-        
-        return count;
+        return ans;
     }
     
-    public void change(char[][] grid, int i, int j) {
-        if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == '0') {
-            return;
+    public static int[][] dir = new int[][]{{-1,0} , {1,0}, {0,1}, {0,-1}};
+    public static void recurse(char[][] grid, int row, int col) {
+        grid[row][col] = '0';
+        for(int[] i : dir) {
+            int nextRow = row + i[0];
+            int nextCol = col + i[1];
+            
+            if(nextRow >= 0 && nextRow < grid.length && nextCol >= 0 && nextCol < grid[0].length && grid[nextRow][nextCol] != '0') {
+                recurse(grid, nextRow, nextCol);
+            }
         }
-        grid[i][j] = '0';
-        change(grid, i, j + 1);
-        change(grid, i + 1, j);
-        change(grid, i - 1, j);
-        change(grid, i, j - 1);
+        
     }
 }
