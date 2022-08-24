@@ -5,7 +5,7 @@ class Solution {
     
     public boolean check(TreeNode root, long min, long max) {
         if(root == null) return true;
-        // System.out.println(root.val + " " + min + " " + max);
+        
         if(root.val <= min || root.val >= max) {
             return false;
         }
