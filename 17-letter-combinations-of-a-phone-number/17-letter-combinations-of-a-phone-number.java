@@ -1,22 +1,25 @@
 class Solution {
+    List<String> li = new ArrayList<>();
     public List<String> letterCombinations(String digits) {
-        if(digits.length() == 0){
-            List<String> ans = new LinkedList<String>();
-            return ans;
+        if(digits.length() == 0) {
+            return new ArrayList<>();
         }
-		LinkedList<String> ans = new LinkedList<String>();
-        String[] mapping = new String[]{"0","0","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        String[] vals = new String[]{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         
-        ans.add("");
-        for(int i=0; i<digits.length(); i++){
-            int num = Character.getNumericValue(digits.charAt(i));
-            while(ans.peek().length() == i){
-                String first = ans.remove();
-                for(char j:mapping[num].toCharArray()){
-                    ans.add(first + j);
-                }
-            }
+        backtrack(digits, vals, 0, "");
+        return li;
+    }
+    
+    public void backtrack(String digits, String[] vals, int index, String ans) {
+        if(ans.length() == digits.length()){
+            li.add(ans);
+            return;
         }
-        return ans;
-	}
+        
+        //234 -> ad (g, h, i)
+        int num = digits.charAt(index) - '0';
+        for(int i = 0; i < vals[num].length(); i++) {
+            backtrack(digits, vals, index + 1, ans + vals[num].charAt(i));
+        }
+    }
 }
